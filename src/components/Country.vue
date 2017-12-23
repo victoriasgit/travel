@@ -33,7 +33,8 @@
             </h4>
             <ul class="list-group list-group-flush">
               <li class="list-group-item" v-for="(city, cityKey) in country.cities">
-                {{city}}
+                <!--{{city}}-->
+                <router-link :to="'/task/' + city">{{city}}</router-link>
                 <button class="btn btn-xs btn-danger float-right" @click="deleteCity(countryKey, cityKey)">x</button>
               </li>
               <div class="list-group-item ">
@@ -45,12 +46,6 @@
             </ul>
           </div>
 
-    </div>
-  </div>
-  <div>
-    <h1 @click='example'>Страны</h1>
-    <div class="country" v-for="country in countries">
-    <p>{{country.title}}</p>
     </div>
   </div>
   </div>
@@ -87,7 +82,6 @@
         }
       },
       addCity: function (countryKey) {
-        console.log(this.$refs);
 
         this.countries[countryKey].cities.push( this.$refs['cityInput'+countryKey][0].value);
       },

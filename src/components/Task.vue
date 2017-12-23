@@ -30,11 +30,11 @@
 
     <hr>
 
-    <div id="list" contenteditable="true">
+    <div id="list" >
       <div class="container">
         <div class="row">
-          <div class="card" v-for="item in items">
-            <div class="card-block">
+          <div class="card" v-for="item in tasks[$route.params.city]">
+            <div class="card-block" contenteditable="true">
               <h3>{{item.title}}</h3>
               <p>{{item.desc}}</p>
             </div>
@@ -57,43 +57,63 @@
         itemTitle: '',
         itemDesc: '',
         itemCountry: '',
-        itemCity: $route.params.cities[indexOf(cities)]
+        tasks: {
+
+        }
       }
     },
     methods: {
-      addCountry: function () {
-        if (this.itemCountry !== '') {
-          const item = {};
-          item.country = this.itemCountry;
-          this.items.push(item);
-          this.itemCountry = '';
-        }
-      },
+//      addCountry: function () {
+//        if (this.itemCountry !== '') {
+//          const item = {};
+//          item.country = this.itemCountry;
+//          this.items.push(item);
+//          this.itemCountry = '';
+//        }
+//      },
+//      addTask: function () {
+//        if (this.itemTitle !== '') {
+//          const item = {};
+//          item.title = this.itemTitle;
+//          item.desc = this.itemDesc;
+//          this.items.push(item);
+//          this.itemTitle = '';
+//          this.itemDesc = '';
+//        }
+//      },
       addTask: function () {
         if (this.itemTitle !== '') {
+          console.log(this.$route);
+          if (typeof this.tasks[this.$route.params.city] === 'undefined')
+            this.tasks[this.$route.params.city] = [];
+
           const item = {};
           item.title = this.itemTitle;
           item.desc = this.itemDesc;
-          this.items.push(item);
+          this.tasks[this.$route.params.city].push(item);
           this.itemTitle = '';
           this.itemDesc = '';
         }
       },
-      addCity: function () {
-        if (this.itemCity !== '') {
-          const item = {};
-          item.city = this.itemCity;
-          this.items.push(item);
-          this.itemCity = '';
-        }
-      },
       deleteItem: function (item) {
-        this.items.splice(this.items.indexOf(item), 1);
+        console.log(this.tasks[this.$route.params.city].indexOf(item));
+        this.tasks[this.$route.params.city].splice(this.tasks[this.$route.params.city].indexOf(item), 1);
+        console.log(this.tasks);
+        this.$forceUpdate()
       },
       editItem: function(item) {
         this.desc = itemTitle;
         this.title = itemDesc;
       },
+//      addCity: function () {
+//        if (this.itemCity !== '') {
+//          const item = {};
+//          item.city = this.itemCity;
+//          this.items.push(item);
+//          this.itemCity = '';
+//        }
+//      },
+
     }
   }
 </script>
