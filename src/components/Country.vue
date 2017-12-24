@@ -11,12 +11,12 @@
     <div class="row">
       <div class="col">
         <label for='itemCountry'>Название страны </label>
-        <input type="text" v-model="itemCountry" id='itemCountry'>
+        <input class="i1" type="text" v-model="itemCountry" id='itemCountry'>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <input type="submit" value=" + Добавить страну" v-on:click.prevent="addCountry" >
+        <input class="m1" type="submit" value=" + Добавить страну" v-on:click.prevent="addCountry" >
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
               </li>
               <div class="list-group-item ">
                 <div class="input-group">
-                <input type="text" :ref="'cityInput'+ countryKey" id='itemCity' class="form-control" placeholder="Добавить город">
+                <input class="i2" type="text" :ref="'cityInput'+ countryKey" id='itemCity' class="form-control" placeholder="Добавить город">
                 <button class=" input-group-addon btn btn-success" @click="addCity(countryKey)"><i class="fa fa-"></i></button>
                 </div>
               </div>
@@ -95,4 +95,70 @@
     }
   }
 </script>
+
+<style>
+    body {
+        height: 100%;
+        width: 100%;
+        background:  #4b5257 url(../photo/bgFirst.jpeg)  no-repeat center top;
+        background-size: cover; /* Масштабируем фон */
+        font: 15px Tahoma, sans-serif;
+        border-top: 8px solid #7e7e7e;
+        padding: 10px;
+    }
+    #app {
+        height: 100%;
+        max-width: 600px;
+        width:  600%;
+        padding: 100px 60px 50px;
+        margin: 0 auto;
+        background: url(../photo/opacity.jpg);
+        opacity: 0.6;
+    }
+    h1 {
+        text-align: center;
+        text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+        0px -5px 35px rgba(255,255,255,0.3);
+        color:green;
+    }
+    h4, .col, .input-group, .list-group-item {
+        text-align: center;
+        color: black;
+        cursor: pointer;
+        border: none;
+        opacity: 1;
+    }
+    .btn, .m1 {
+        background-color: #68b12f;
+        background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
+        background: -webkit-linear-gradient(top, #68b12f, #50911e);
+        background: -moz-linear-gradient(top, #68b12f, #50911e);
+        background: -ms-linear-gradient(top, #68b12f, #50911e);
+        background: -o-linear-gradient(top, #68b12f, #50911e);
+        background: linear-gradient(top, #68b12f, #50911e);
+        border: 1px solid #509111;
+        border-bottom: 1px solid #5b992b;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
+        box-shadow: inset 0 1px 0 0 #9fd574;
+        -webkit-box-shadow: 0 1px 0 0 #9fd574 inset ;
+        -moz-box-shadow: 0 1px 0 0 #9fd574 inset;
+        -ms-box-shadow: 0 1px 0 0 #9fd574 inset;
+        -o-box-shadow: 0 1px 0 0 #9fd574 inset;
+        color: white;
+        font-weight: bold;
+        padding: 6px 20px;
+        text-align: center;
+        text-shadow: 0 -1px 0 #396715;
+    }
+    .i1:focus, .i2:focus {
+        height:20px;
+        width:220px;
+        padding:5px 8px;
+        box-shadow: 0 0 3px #aaa;
+    }
+</style>
 
